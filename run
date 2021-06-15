@@ -1,0 +1,7 @@
+#!/bin/bash
+
+moonc .
+love .
+rm *.lua
+rm src/*.lua
+rm graphics/*.lua
