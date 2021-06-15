@@ -4,4 +4,5 @@ moonc .
 love .
 rm *.lua
 rm src/*.lua
+rm src/states/*.lua
 rm graphics/*.lua
