@@ -16,21 +16,19 @@ export class StartState extends BaseState
     Graphics.printf "Doomed Bricks", 0,
       VIRTUAL_HEIGHT / 3, VIRTUAL_WIDTH, 'center'
     Graphics.setFont Res.Fonts['medium']
-    blue = {103/255, 1, 1, 1}
-    white = {1, 1, 1, 1}
     if @highlighted == 1
-      Graphics.setColor(blue)
+      Graphics.setColor(Colors.blueviolet)
 
     Graphics.printf "Start", 0,
       VIRTUAL_HEIGHT / 2 + 50, VIRTUAL_WIDTH, 'center'
 
-    Graphics.setColor(white)
+    Graphics.setColor(Colors.white)
     if @highlighted == 2
-      Graphics.setColor(blue)
+      Graphics.setColor(Colors.blueviolet)
 
     Graphics.printf "High Scores", 0,
       VIRTUAL_HEIGHT / 2 + 70, VIRTUAL_WIDTH, 'center'
 
-    Graphics.setColor(white)
+    Graphics.setColor(Colors.white)
 
 
