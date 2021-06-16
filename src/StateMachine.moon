@@ -13,9 +13,9 @@ export class StateMachine
     @current = @empty
 
   change: (stateName, params) =>
-    assert @states[stateName]
+    assert @states[stateName], "State does not exist."
     @current\exit!
-    @current = @states[stateName]! -- mb should not be called ??
+    @current = @states[stateName]!
     @current\enter params
 
   update: (dt) =>
