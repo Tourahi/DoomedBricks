@@ -10,7 +10,6 @@ export Keyboard = love.keyboard
 export Event = love.event
 
 assert require 'src/constants'
-assert require 'src/Resources'
 assert require 'src/colors'
 
 assert require 'src/StateMachine'

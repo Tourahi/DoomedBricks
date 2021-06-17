@@ -1,4 +1,6 @@
 
+import ceil from math
+
 export class StartState extends BaseState
   new: =>
     @highlighted = 1
@@ -15,20 +17,20 @@ export class StartState extends BaseState
     Graphics.setFont Res.Fonts['large']
     Graphics.printf "Doomed Bricks", 0,
       VIRTUAL_HEIGHT / 3, VIRTUAL_WIDTH, 'center'
+
     Graphics.setFont Res.Fonts['medium']
     if @highlighted == 1
       Graphics.setColor(Colors.blueviolet)
 
     Graphics.printf "Start", 0,
-      VIRTUAL_HEIGHT / 2 + 50, VIRTUAL_WIDTH, 'center'
+      ceil(VIRTUAL_HEIGHT / 2 + 70), VIRTUAL_WIDTH, 'center'
 
     Graphics.setColor(Colors.white)
     if @highlighted == 2
       Graphics.setColor(Colors.blueviolet)
 
     Graphics.printf "High Scores", 0,
-      VIRTUAL_HEIGHT / 2 + 70, VIRTUAL_WIDTH, 'center'
-
+      ceil(VIRTUAL_HEIGHT / 2 + 90), VIRTUAL_WIDTH, 'center'
     Graphics.setColor(Colors.white)
 
 

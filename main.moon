@@ -3,12 +3,19 @@ assert require 'src/Dependencies'
 with love
   .load = (arg) ->
     Bino\watch "FPS",-> love.timer.getFPS!
+
     Graphics.setDefaultFilter 'nearest', 'nearest'
+
+    assert require 'src/Resources'
+
     math.randomseed os.time!
     Window.setTitle "Doomed Bricks"
+
     Graphics.setFont Res.Fonts['small']
+
     Push\setupScreen VIRTUAL_WIDTH, VIRTUAL_HEIGHT,
       WINDOW_WIDTH, WINDOW_HEIGHT, WinS
+
 
     export gStateMachine = StateMachine {
       ['start']: -> StartState!
@@ -26,10 +33,14 @@ with love
     Push\resize w, h
 
   .draw = () ->
-    Bino\draw!
-    Push\apply 'start'
+    Push\start!
+    backgroundW = Res.Textures['background']\getWidth!
+    backgroundH = Res.Textures['background']\getHeight!
+    Graphics.draw Res.Textures['background'], 0, 0, 0,
+        VIRTUAL_WIDTH / (backgroundW - 1), VIRTUAL_HEIGHT / (backgroundH - 1)
     gStateMachine\draw!
-    Push\apply 'end'
+    Push\finish!
+    Bino\draw!
   .keypressed = (key) ->
     Keyboard.keysPressed[key] = true
 
