@@ -1,5 +1,7 @@
 assert require 'src/Dependencies'
 
+import ceil from math
+
 with love
   .load = (arg) ->
     Bino\watch "FPS",-> love.timer.getFPS!
@@ -36,8 +38,9 @@ with love
     Push\start!
     backgroundW = Res.Textures['background']\getWidth!
     backgroundH = Res.Textures['background']\getHeight!
-    Graphics.draw Res.Textures['background'], 0, 0, 0,
-        VIRTUAL_WIDTH / (backgroundW - 1), VIRTUAL_HEIGHT / (backgroundH - 1)
+    Graphics.draw Res.Textures['background'], -80, 0, 0,
+        ceil VIRTUAL_WIDTH / (backgroundW - 1), ceil VIRTUAL_HEIGHT / (backgroundH - 1)
+
     gStateMachine\draw!
     Push\finish!
     Bino\draw!
