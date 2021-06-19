@@ -1,3 +1,4 @@
+Util = assert require 'src/Util'
 
 export Res = {
   Fonts: {
@@ -29,4 +30,8 @@ export Res = {
 
     ['music']: love.audio.newSource('sounds/music.wav', 'static')
   }
+}
+
+export Frames = {
+  ['paddles']: Util.GenerateQuadsPaddles Res.Textures['main']
 }

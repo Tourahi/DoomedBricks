@@ -25,7 +25,6 @@ with love
     gStateMachine\change 'start'
     Keyboard.keysPressed = {}
 
-
   .update = () ->
     Bino\update!
     gStateMachine\update dt

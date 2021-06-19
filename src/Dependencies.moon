@@ -11,7 +11,6 @@ export Event = love.event
 
 assert require 'src/constants'
 assert require 'src/colors'
-assert require 'src/Util'
 
 assert require 'src/StateMachine'
 assert require 'src/states/BaseState'
