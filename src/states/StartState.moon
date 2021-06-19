@@ -13,10 +13,23 @@ export class StartState extends BaseState
         @highlighted = 1
       Res.Sounds['paddle-hit']\play!
 
+    print @highlighted
+    if @highlighted == 1 and (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))
+      Res.Sounds['confirm']\play!
+      GStateMachine\change 'play'
+
     if Keyboard.wasPressed('escape')
       Event.quit!
 
+
+
   draw: =>
+    -- background
+    backgroundW = Res.Textures['background']\getWidth!
+    backgroundH = Res.Textures['background']\getHeight!
+    Graphics.draw Res.Textures['background'], -80, 0, 0,
+        ceil VIRTUAL_WIDTH / (backgroundW - 1), ceil VIRTUAL_HEIGHT / (backgroundH - 1)
+
     Graphics.setFont Res.Fonts['large']
     Graphics.printf "Doomed Bricks", 0,
       VIRTUAL_HEIGHT / 3, VIRTUAL_WIDTH, 'center'

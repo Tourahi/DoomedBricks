@@ -19,15 +19,16 @@ with love
       WINDOW_WIDTH, WINDOW_HEIGHT, WinS
 
 
-    export gStateMachine = StateMachine {
+    export GStateMachine = StateMachine {
       ['start']: -> StartState!
+      ['play']: -> PlayState!
     }
-    gStateMachine\change 'start'
+    GStateMachine\change 'start'
     Keyboard.keysPressed = {}
 
-  .update = () ->
+  .update = (dt) ->
     Bino\update!
-    gStateMachine\update dt
+    GStateMachine\update dt
     Keyboard.keysPressed = {}
 
   .resize = (w, h) ->
@@ -35,12 +36,7 @@ with love
 
   .draw = () ->
     Push\start!
-    backgroundW = Res.Textures['background']\getWidth!
-    backgroundH = Res.Textures['background']\getHeight!
-    Graphics.draw Res.Textures['background'], -80, 0, 0,
-        ceil VIRTUAL_WIDTH / (backgroundW - 1), ceil VIRTUAL_HEIGHT / (backgroundH - 1)
-
-    gStateMachine\draw!
+    GStateMachine\draw!
     Push\finish!
     Bino\draw!
   .keypressed = (key) ->

@@ -19,6 +19,7 @@ export class StateMachine
     @current\enter params
 
   update: (dt) =>
+    -- print dt
     @current\update dt
 
   draw: =>
