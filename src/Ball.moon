@@ -1,4 +1,6 @@
 import random from math
+import min from math
+import abs from math
 
 class Ball
   new: (skin) =>
@@ -33,9 +35,24 @@ class Ball
     @x = VIRTUAL_WIDTH / 2 - 2
     @y = VIRTUAL_HEIGHT / 2 - 2
 
+  rebound: (shift) =>
+    min_shift = min(abs(shift.x), abs(shift.y))
+    if abs(shift.x) == min_shift
+      shift.y = 0
+      @x += shift.x
+    else
+      shift.x = 0
+      @y += shift.y
+
+    if shift.x ~= 0
+      @dx = -@dx
+    if shift.y ~= 0
+      @dy = -@dy
+
+
   update: (dt) =>
-    @x = @x + @dx * dt
-    @y = @y + @dy * dt
+    @x += @dx * dt
+    @y += @dy * dt
 
     if @x <= 0
       @x = 0

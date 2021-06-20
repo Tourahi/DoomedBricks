@@ -20,8 +20,6 @@ export class StartState extends BaseState
     if Keyboard.wasPressed('escape')
       Event.quit!
 
-
-
   draw: =>
     -- background
     backgroundW = Res.Textures['background']\getWidth!
