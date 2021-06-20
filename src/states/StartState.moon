@@ -13,7 +13,6 @@ export class StartState extends BaseState
         @highlighted = 1
       Res.Sounds['paddle-hit']\play!
 
-    print @highlighted
     if @highlighted == 1 and (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))
       Res.Sounds['confirm']\play!
       GStateMachine\change 'play'

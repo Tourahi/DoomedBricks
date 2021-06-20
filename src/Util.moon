@@ -57,6 +57,26 @@ GenerateQuadsPaddles = (atlas) ->
 
   quads
 
+GenerateQuadsBalls = (atlas) ->
+  x = 96
+  y = 48
 
+  counter = 1
+  quads = {}
 
-{:GenerateQuads, :GenerateQuadsPaddles}
+  for i = 0, 3
+    quads[counter] = Graphics.newQuad x, y, 8, 8, atlas\getDimensions!
+    x += 8
+    counter += 1
+
+  x = 96
+  y = 56
+
+  for i = 0, 2
+    quads[counter] = Graphics.newQuad x, y, 8, 8, atlas\getDimensions!
+    x += 8
+    counter += 1
+
+  quads
+
+{:GenerateQuads, :GenerateQuadsPaddles, :GenerateQuadsBalls}
