@@ -19,6 +19,11 @@ assert require 'src/states/PlayState'
 
 
 
+export GStateMachine = StateMachine {
+  ['start']: -> StartState!
+  ['play']: -> PlayState!
+}
+
 
 export WinS = {
   vsync: true,

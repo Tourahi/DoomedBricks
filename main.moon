@@ -12,17 +12,11 @@ with love
 
     math.randomseed os.time!
     Window.setTitle "Doomed Bricks"
-
     Graphics.setFont Res.Fonts['small']
 
     Push\setupScreen VIRTUAL_WIDTH, VIRTUAL_HEIGHT,
       WINDOW_WIDTH, WINDOW_HEIGHT, WinS
 
-
-    export GStateMachine = StateMachine {
-      ['start']: -> StartState!
-      ['play']: -> PlayState!
-    }
     GStateMachine\change 'start'
     Keyboard.keysPressed = {}
 
@@ -39,6 +33,7 @@ with love
     GStateMachine\draw!
     Push\finish!
     Bino\draw!
+
   .keypressed = (key) ->
     Keyboard.keysPressed[key] = true
 

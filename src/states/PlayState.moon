@@ -7,7 +7,7 @@ import random from math
 export class PlayState extends BaseState
   new: =>
     @paused = false
-    @paddle = Paddle!
+    @paddle = Paddle 'medium'
     @ball = Ball random 7
     @bricks = LevelMaker.createMap!
 

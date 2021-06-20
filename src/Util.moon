@@ -1,11 +1,6 @@
-
-
-
-
 GenerateQuads = (atlas, tileW, tileH) ->
   sheetW = atlas\getWidth! / tileW
   sheetH = atlas\getHeight! / tileH
-
   sheetCount = 1
   spritesheet = {}
 
@@ -17,16 +12,11 @@ GenerateQuads = (atlas, tileW, tileH) ->
 
   spritesheet
 
-
 table.slice = (t, f, l, s) ->
   sliced = {}
-
   for i = f or 1, l or #t, s or 1
     sliced[#sliced+1] = t[i]
-
   sliced
-
-
 
 GenerateQuadsPaddles = (atlas) ->
   x = 0
@@ -39,15 +29,12 @@ GenerateQuadsPaddles = (atlas) ->
     -- smallest
     quads[counter] = Graphics.newQuad x, y, 32, 16, atlas\getDimensions!
     counter += 1
-
     -- medium
     quads[counter] = Graphics.newQuad x + 32, y, 64, 16, atlas\getDimensions!
     counter += 1
-
     -- large
     quads[counter] = Graphics.newQuad x + 96, y, 96, 16, atlas\getDimensions!
     counter += 1
-
     -- huge
     quads[counter] = Graphics.newQuad x, y + 16, 126, 16, atlas\getDimensions!
     counter += 1
