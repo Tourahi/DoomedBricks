@@ -21,10 +21,10 @@ GenerateQuads = (atlas, tileW, tileH) ->
 table.slice = (t, f, l, s) ->
   sliced = {}
 
-  for i = f or 1, last or #t, s or 1
+  for i = f or 1, l or #t, s or 1
     sliced[#sliced+1] = t[i]
 
-  slised
+  sliced
 
 
 
@@ -79,4 +79,7 @@ GenerateQuadsBalls = (atlas) ->
 
   quads
 
-{:GenerateQuads, :GenerateQuadsPaddles, :GenerateQuadsBalls}
+GenerateQuadsBricks = (atlas) ->
+  return table.slice GenerateQuads(atlas, 32, 16), 1, 21
+
+{:GenerateQuads, :GenerateQuadsPaddles, :GenerateQuadsBalls, :GenerateQuadsBricks}

@@ -1,5 +1,6 @@
 Paddle = assert require 'src/Paddle'
 Ball = assert require 'src/Ball'
+LevelMaker = assert require 'src/LevelMaker'
 
 import random from math
 
@@ -8,6 +9,7 @@ export class PlayState extends BaseState
     @paused = false
     @paddle = Paddle!
     @ball = Ball random 7
+    @bricks = LevelMaker.createMap!
 
 
   update: (dt) =>
@@ -28,6 +30,10 @@ export class PlayState extends BaseState
       @ball.dy = -@ball.dy
       Res.Sounds['paddle-hit']\play!
 
+    for k, brick in pairs @bricks
+      if brick.inGame and @ball\collides brick
+        brick\hit!
+
 
     if Keyboard.wasPressed 'escape'
       Event.quit!
@@ -35,6 +41,9 @@ export class PlayState extends BaseState
   draw: =>
     @paddle\draw!
     @ball\draw!
+
+    for k, brick in pairs @bricks
+      brick\draw!
 
     if @paused
       Graphics.setFont Res.Fonts['large']
