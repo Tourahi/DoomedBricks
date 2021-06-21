@@ -51,8 +51,6 @@ class Ball
       @dy = -(@dy + (@dy * timer.getDelta!))
 
   update: (dt) =>
-    print "dx : ", @dx
-    print "dy : ", @dy
     @x += @dx * dt
     @y += @dy * dt
 

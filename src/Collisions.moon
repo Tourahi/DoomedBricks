@@ -1,4 +1,5 @@
 Paddle = assert require 'src/Paddle'
+Ball  = assert require 'src/Ball'
 import abs from math
 
 class Collisions
@@ -22,7 +23,7 @@ class Collisions
            shift_b_y = ( a.y + a.height ) - b.y
         else
            shift_b_y = a.y - ( b.y + b.height )
-        if a.__class == Paddle
+        if a.__class == Paddle and b.__class == Ball
           if  b.x  <  a.x + (a.width / 2) and a.dx < 0
             b.dx = -50 + -(8 * (a.x + a.width / 2 - b.x))
           if  b.x  >  a.x + (a.width / 2) and a.dx > 0

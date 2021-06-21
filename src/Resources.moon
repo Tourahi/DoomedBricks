@@ -8,7 +8,7 @@ export Res = {
   },
   Textures: {
     ['background']: love.graphics.newImage('graphics/background.png'),
-    ['main']: love.graphics.newImage('graphics/breakout.png'),
+    ['main']: love.graphics.newImage('graphics/atlas.png'),
     ['arrows']: love.graphics.newImage('graphics/arrows.png'),
     ['hearts']: love.graphics.newImage('graphics/hearts.png'),
     ['particle']: love.graphics.newImage('graphics/particle.png')
