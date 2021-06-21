@@ -1,3 +1,5 @@
+Paddle = assert require 'src/Paddle'
+import abs from math
 
 class Collisions
   new: =>
@@ -11,15 +13,20 @@ class Collisions
       a.y < b.y + b.height and
       b.y < a.y + a.height
         overlap = true
-        if ( a.x + a.width / 2 ) < ( b.x + b.width / 2 )
+        if ( a.x + (a.width / 2) ) < ( b.x + (b.width / 2) )
            shift_b_x = ( a.x + a.width ) - b.x
         else
            shift_b_x = a.x - ( b.x + b.width )
 
-        if ( a.y + a.height / 2 ) < ( b.y + b.height / 2 )
+        if ( a.y + (a.height / 2) ) < ( b.y + (b.height / 2) )
            shift_b_y = ( a.y + a.height ) - b.y
         else
            shift_b_y = a.y - ( b.y + b.height )
+        if a.__class == Paddle
+          if  b.x  <  a.x + (a.width / 2) and a.dx < 0
+            b.dx = -50 + -(8 * (a.x + a.width / 2 - b.x))
+          if  b.x  >  a.x + (a.width / 2) and a.dx > 0
+            b.dx = 50 + (8 * abs((a.x + a.width / 2 - b.x)))
 
     return overlap, shift_b_x, shift_b_y
 

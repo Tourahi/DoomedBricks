@@ -1,6 +1,7 @@
 import random from math
 import min from math
 import abs from math
+import timer from love
 
 class Ball
   new: (skin) =>
@@ -15,7 +16,7 @@ class Ball
 
   start: =>
     @dx = random -200, 200
-    @dy = random -50, -60
+    @dy = random -200, -200
     @x = VIRTUAL_WIDTH / 2 - 4
     @y = VIRTUAL_HEIGHT - 42
 
@@ -36,23 +37,25 @@ class Ball
     @y = VIRTUAL_HEIGHT / 2 - 2
 
   rebound: (shift) =>
-    min_shift = min(abs(shift.x), abs(shift.y))
+    min_shift = min abs(shift.x), abs(shift.y)
     if abs(shift.x) == min_shift
       shift.y = 0
-      @x += shift.x
+      @x += shift.x * 1.02
     else
       shift.x = 0
-      @y += shift.y
+      @y += shift.y * 1.02
 
     if shift.x ~= 0
-      @dx = -@dx
+      @dx = -(@dx + (@dx * timer.getDelta!))
     if shift.y ~= 0
-      @dy = -@dy
-
+      @dy = -(@dy + (@dy * timer.getDelta!))
 
   update: (dt) =>
+    print "dx : ", @dx
+    print "dy : ", @dy
     @x += @dx * dt
     @y += @dy * dt
+
 
     if @x <= 0
       @x = 0
