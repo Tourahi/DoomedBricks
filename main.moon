@@ -2,6 +2,7 @@ assert require 'src/Dependencies'
 
 import ceil from math
 
+
 with love
   .load = (arg) ->
     Bino\watch "FPS",-> love.timer.getFPS!

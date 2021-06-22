@@ -41,6 +41,13 @@ export class SettingsState extends BaseState
         w,h = resolution_o[choices[1].c].w, resolution_o[choices[1].c].h
         Window.setMode w, h, {resizable: false}
         Push\resize w, h
+      when 2
+        switch @sound
+          when "On"
+            Audio.setVolume 1
+          when "Off"
+            Audio.setVolume 0
+
 
 
   update: (dt) =>

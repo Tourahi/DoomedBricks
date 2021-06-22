@@ -8,7 +8,7 @@ export Graphics = love.graphics
 export Window = love.window
 export Keyboard = love.keyboard
 export Event = love.event
-
+export Audio = love.audio
 assert require 'src/constants'
 assert require 'src/colors'
 
@@ -32,3 +32,6 @@ export WinS = {
   fullscreen: false,
   resizable: true
 }
+
+love.sound.Sound_On = true
+
