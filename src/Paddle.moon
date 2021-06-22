@@ -22,11 +22,11 @@ class Paddle
       when 'medium'
         @size = 2
         @width = 64
-        @speed = 200
+        @speed = 250
       when 'big'
         @size = 3
         @width = 96
-        @speed = 150
+        @speed = 200
       when 'large'
         @size = 4
         @width = 128

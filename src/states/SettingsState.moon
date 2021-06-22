@@ -10,7 +10,7 @@ sound_o = {
 }
 
 choices = {
-  {c:1,max:2},
+  {c:2,max:3},
   {c:1,max:2},
 }
 
@@ -18,13 +18,14 @@ export class SettingsState extends BaseState
 
   new: =>
     resolution_o = {
-      {w: Graphics.getWidth!, h: Graphics.getHeight!},
-      {w: 720, h: 720},
+      {w: 720, h: 576},
+      {w: 1280, h: 720},
+      {w: 1920, h: 1080},
     }
     @opts = 3
     @highlighted = 1
     @res = ""
-    @resIdx = 1
+    @resIdx = 2
     @sound = ""
     @soundIdx = 1
     @updateOPtions!

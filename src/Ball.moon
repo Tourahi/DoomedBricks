@@ -3,12 +3,17 @@ import min from math
 import abs from math
 import timer from love
 
+clamp = (n, low, high) -> math.min(math.max(n, low), high)
+
+
 class Ball
   new: (skin) =>
     @width = 8
     @height = 8
     @dx = 0
     @dy = 0
+    @mDx = {max: 200, min:-200}
+    @mDy = {max: 200, min:-200}
     @skin = skin
     @x = VIRTUAL_WIDTH / 2 - 2
     @y = VIRTUAL_HEIGHT / 2 - 2
@@ -19,16 +24,8 @@ class Ball
     @dy = random -200, -200
     @x = VIRTUAL_WIDTH / 2 - 4
     @y = VIRTUAL_HEIGHT - 42
+    Bino\watch "D_x_y :",-> {dx:@dx, dy:@dy}
 
-  -- AABB
-  collides: (target) =>
-    if @x > target.x + target.width or target.x > @x + @width
-      return false
-
-    if @y > target.y + target.height or target.y > @y + @height
-      return false
-
-    return true
 
   reset: =>
     @dx = 0
@@ -40,17 +37,20 @@ class Ball
     min_shift = min abs(shift.x), abs(shift.y)
     if abs(shift.x) == min_shift
       shift.y = 0
-      @x += shift.x * 1.02
+      @x += shift.x
     else
       shift.x = 0
-      @y += shift.y * 1.02
+      @y += shift.y
 
     if shift.x ~= 0
       @dx = -(@dx + (@dx * timer.getDelta!))
     if shift.y ~= 0
       @dy = -(@dy + (@dy * timer.getDelta!))
 
+
   update: (dt) =>
+    @dx = clamp @dx, @mDx.min, @mDx.max
+    @dy = clamp @dy, @mDy.min, @mDx.max
     @x += @dx * dt
     @y += @dy * dt
 
