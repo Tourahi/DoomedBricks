@@ -26,12 +26,13 @@ with love
     Keyboard.keysPressed = {}
 
   .resize = (w, h) ->
-    Push\resize w, h
+    Window.setMode w, h,{resizable: false}
 
   .draw = () ->
     Push\start!
     GStateMachine\draw!
     Push\finish!
+    Graphics.setFont Res.Fonts['medium']
     Bino\draw!
 
   .keypressed = (key) ->
