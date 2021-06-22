@@ -16,12 +16,14 @@ assert require 'src/StateMachine'
 assert require 'src/states/BaseState'
 assert require 'src/states/StartState'
 assert require 'src/states/PlayState'
+assert require 'src/states/SettingsState'
 
 
 
 export GStateMachine = StateMachine {
   ['start']: -> StartState!
   ['play']: -> PlayState!
+  ['settings']: -> SettingsState!
 }
 
 
