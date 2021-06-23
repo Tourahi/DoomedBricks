@@ -3,6 +3,7 @@ import min from math
 import abs from math
 import timer from love
 
+
 clamp = (n, low, high) -> math.min(math.max(n, low), high)
 
 
@@ -43,9 +44,9 @@ class Ball
       @y += shift.y
 
     if shift.x ~= 0
-      @dx = -(@dx + (@dx * timer.getDelta!))
+      @dx = -@dx
     if shift.y ~= 0
-      @dy = -(@dy + (@dy * timer.getDelta!))
+      @dy = -@dy
 
 
   update: (dt) =>

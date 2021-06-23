@@ -1,5 +1,7 @@
 Paddle = assert require 'src/Paddle'
 Ball  = assert require 'src/Ball'
+Timer = assert require "src/Timer"
+
 import abs from math
 
 class Collisions
@@ -35,6 +37,8 @@ class Collisions
     overlap, shift_b_x, shift_b_y = @check_rectangles_overlap paddle, ball
     if overlap
       -- rebound
+      paddle.freez = true
+      paddle.timer = Timer 0.023,(owner) => owner.freez = false
       ball\rebound( {x: shift_b_x, y:shift_b_y} )
 
 

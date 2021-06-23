@@ -1,6 +1,7 @@
 import max from math
 import min from math
 
+
 class Paddle
   new: (paddleType) =>
     @x = VIRTUAL_WIDTH / 2 - 32
@@ -12,6 +13,8 @@ class Paddle
     @size = 0
     @speed = 0
     @alterPaddle paddleType
+    @timer = nil
+    @freez = false
 
   alterPaddle: (type) =>
     switch type
@@ -34,9 +37,12 @@ class Paddle
 
 
   update: (dt) =>
-    if Keyboard.isDown 'left'
+    if @timer
+      @timer\tick self, dt
+
+    if Keyboard.isDown('left') and @freez == false
       @dx = -@speed
-    elseif Keyboard.isDown 'right'
+    elseif Keyboard.isDown('right') and @freez == false
       @dx = @speed
     else
       @dx = 0
