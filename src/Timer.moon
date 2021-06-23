@@ -7,7 +7,6 @@ class Timer
     @time = 0
 
   ticks: (frames) =>
-    print frames * Ltimer.getFPS!
     frames * Ltimer.getFPS!
 
   tick: (owner, dt) =>

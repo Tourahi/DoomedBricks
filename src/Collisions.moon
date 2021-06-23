@@ -38,7 +38,7 @@ class Collisions
     if overlap
       -- rebound
       paddle.freez = true
-      paddle.timer = Timer Timer\ticks(0.00040),(owner) => owner.freez = false
+      paddle.timer = Timer 0.023,(owner) => owner.freez = false
       ball\rebound( {x: shift_b_x, y:shift_b_y} )
 
 
