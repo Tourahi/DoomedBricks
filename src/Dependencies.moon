@@ -1,3 +1,6 @@
+M = require "moon"
+export Dump = M.p
+
 
 export Push  = assert require 'luaLibs/push'
 

@@ -35,6 +35,7 @@ class Ball
     @y = VIRTUAL_HEIGHT / 2 - 2
 
   rebound: (shift) =>
+    Dump self
     min_shift = min abs(shift.x), abs(shift.y)
     if abs(shift.x) == min_shift
       shift.y = 0
