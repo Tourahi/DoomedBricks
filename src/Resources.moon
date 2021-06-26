@@ -36,4 +36,5 @@ export Frames = {
   ['paddles']: Util.GenerateQuadsPaddles Res.Textures['main'],
   ['balls']: Util.GenerateQuadsBalls Res.Textures['main'],
   ['bricks']: Util.GenerateQuadsBricks Res.Textures['main']
+  ['hearts']: Util.GenerateQuads Res.Textures['hearts'], 10, 9
 }

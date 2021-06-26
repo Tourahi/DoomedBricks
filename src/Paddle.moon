@@ -37,7 +37,6 @@ class Paddle
 
 
   update: (dt) =>
-    Dump self
     if @timer
       @timer\tick self, dt
 

@@ -69,4 +69,18 @@ GenerateQuadsBalls = (atlas) ->
 GenerateQuadsBricks = (atlas) ->
   return table.slice GenerateQuads(atlas, 32, 16), 1, 21
 
-{:GenerateQuads, :GenerateQuadsPaddles, :GenerateQuadsBalls, :GenerateQuadsBricks}
+DrawHealth = (health) ->
+  hx = VIRTUAL_WIDTH - 230
+  for i = 1, health
+    Graphics.draw Res.Textures['hearts'], Frames['hearts'][1], hx, 4
+    hx += 11
+  for i = 1, 3 - health
+    Graphics.draw Res.Textures['hearts'], Frames['hearts'][2], hx, 4
+    hx += 11
+
+DrawScore = (score) ->
+  Graphics.setFont Res.Fonts['small']
+  Graphics.print 'Score:', VIRTUAL_WIDTH - 60, 5
+  Graphics.printf tostring(score), VIRTUAL_WIDTH - 50, 5, 40, 'right'
+
+{:GenerateQuads, :GenerateQuadsPaddles, :GenerateQuadsBalls, :GenerateQuadsBricks, :DrawHealth, :DrawScore}

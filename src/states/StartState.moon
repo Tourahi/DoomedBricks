@@ -1,3 +1,5 @@
+Paddle = assert require 'src/Paddle'
+LevelMaker = assert require 'src/LevelMaker'
 
 import ceil from math
 
@@ -15,7 +17,12 @@ export class StartState extends BaseState
 
     if @highlighted == 1 and (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))
       Res.Sounds['confirm']\play!
-      GStateMachine\change 'play'
+      GStateMachine\change 'serve', {
+        paddle: Paddle 'medium',
+        bricks: LevelMaker.createMap 1,
+        health: 3,
+        score: 0
+      }
 
     elseif @highlighted == 3 and (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))
       Res.Sounds['confirm']\play!
