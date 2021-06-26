@@ -47,6 +47,7 @@ export class PlayState extends BaseState
           bricks: @bricks,
           health: @health,
           score: @score,
+          ball: @ball
         }
 
 

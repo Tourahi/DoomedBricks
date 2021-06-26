@@ -1,4 +1,5 @@
 local Binocles = {};
+local concat = table.concat
 Binocles.__index = Bonocles;
 
 local defaultOptions = {
@@ -149,6 +150,40 @@ function Binocles:update()
   end
 end
 
+function Binocles.dump(value)
+  local _dump; -- recursive func
+  _dump = function(value, depth)
+    if depth == nil then
+      depth = 0;
+    end
+    local v_t = type(value);
+    if v_t == "string" then
+      return '"'.. value .. '"\n';
+    elseif v_t == "table" then
+      depth = depth + 1;
+      local lines;
+      do
+        local _lines = {};
+        local _len = 1;
+        for k, v in pairs(value) do
+          _lines[_len] = (" "):rep(depth * 4) .. "[" .. tostring(k) .. "] = " .. _dump(v, depth);
+          _len = _len + 1;
+        end
+        lines = _lines;
+      end
+      -- Moonscript Only
+      local class_name;
+      if value.__call then
+        class_name = "<" .. tostring(value.__class.__name) .. ">";
+      end
+      return tostring(class_name or "") .. "{\n" .. concat(lines) .. (" "):rep((depth - 1) * 4) .. "}\n";
+    else
+      return tostring(value) .. "\n";
+    end
+  end
+  return _dump(value);
+end
+
 function Binocles:draw()
   love.graphics.push('all');
   if self.active then
@@ -156,19 +191,8 @@ function Binocles:draw()
     local draw_y = self.draw_y;
     local draw_x = self.draw_x;
     for nameIndice, result in ipairs(self.results) do
-      if type(result) == 'number' or type(result) == 'string' then
-        love.graphics.print(self.names[nameIndice] .. " : " .. result, draw_x, (draw_y + 1) * 15)
-      elseif type(result) == 'table' then
-        love.graphics.print(self.names[nameIndice] .. " : Table:", draw_x, (draw_y + 1) * 15)
-        draw_y = draw_y + 1
-        for i, v in pairs(result) do
-          love.graphics.print("      " .. i .. " : " .. v, draw_x, (draw_y + 1) * 15)
-          draw_y = draw_y + 1
-        end
-      elseif type(result) == 'boolean' then
-        love.graphics.print(self.names[nameIndice] .. " : " .. tostring(result), draw_x, (draw_y + 1) * 15)
-      end
-      draw_y = draw_y + 1
+      love.graphics.print(self.names[nameIndice] .. " : " .. self.dump(result), draw_x, (draw_y + 1) * 15);
+      draw_y = draw_y + 1;
     end
   end
   love.graphics.pop();

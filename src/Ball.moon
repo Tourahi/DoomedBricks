@@ -25,7 +25,7 @@ class Ball
     @dy = random -200, -200
     @x = VIRTUAL_WIDTH / 2 - 4
     @y = VIRTUAL_HEIGHT - 42
-    Bino\watch "D_x_y :",-> {dx:@dx, dy:@dy}
+    Bino\watch "D_x_y",-> {dx:@dx, dy:@dy}
 
 
   reset: =>

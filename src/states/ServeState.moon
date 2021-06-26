@@ -10,7 +10,7 @@ export class ServeState extends BaseState
     @health = P.health
     @score = P.score
 
-    @ball = Ball!
+    @ball = P.ball or Ball!
     @ball.skin = random 7
 
   update: (dt) =>
