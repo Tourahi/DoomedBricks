@@ -40,3 +40,5 @@ export class ServeState extends BaseState
       brick\draw!
     Util.DrawHealth @health
     Util.DrawScore @score
+    Graphics.printf "Press Enter to start.", 0, VIRTUAL_HEIGHT / 2 - 16, VIRTUAL_WIDTH, 'center'
+
