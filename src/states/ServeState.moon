@@ -18,6 +18,14 @@ export class ServeState extends BaseState
     @ball.x = @paddle.x + (@paddle.width / 2) - 4
     @ball.y = @paddle.y - 8
 
+    if (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))
+      GStateMachine\change 'play', {
+        paddle: @paddle,
+        bricks: @bricks,
+        health: @health,
+        score: @score,
+        ball: @ball
+      }
 
     if Keyboard.wasPressed 'escape'
       Event.quit!

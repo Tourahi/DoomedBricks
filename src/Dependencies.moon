@@ -26,9 +26,9 @@ assert require 'src/states/ServeState'
 
 export GStateMachine = StateMachine {
   ['serve']: (params) -> ServeState params
-  ['start']: -> StartState!
-  ['play']: -> PlayState!
-  ['settings']: -> SettingsState!
+  ['start']: (params) -> StartState params
+  ['play']: (params) -> PlayState params
+  ['settings']: (params) -> SettingsState params
 }
 
 

@@ -40,9 +40,11 @@ class Ball
     if abs(shift.x) == min_shift
       shift.y = 0
       @x += shift.x
+      @dy *= 1.2
     else
       shift.x = 0
       @y += shift.y
+      @dy *= 1.2
 
     if shift.x ~= 0
       @dx = -@dx

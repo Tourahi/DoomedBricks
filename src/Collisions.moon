@@ -6,7 +6,7 @@ import abs from math
 
 class Collisions
   new: =>
-
+    @score = 0
   check_rectangles_overlap: (a, b) =>
     overlap = false
     shift_b_x, shift_b_y = 0, 0
@@ -46,13 +46,17 @@ class Collisions
     for _, brick in pairs bricks
       overlap, shift_b_x, shift_b_y = @check_rectangles_overlap brick, ball
       if brick.inGame and overlap
+        @score = 10
         ball\rebound( {x: shift_b_x, y:shift_b_y} )
         brick\hit!
 
 
+
   resolve_collisions: (ball, paddle, bricks) =>
+    @score = 0
     @ball_paddle_collision paddle, ball
     @ball_bricks_collision ball, bricks
+    @score
 
 
 
