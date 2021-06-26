@@ -30,8 +30,6 @@ export class ServeState extends BaseState
     if Keyboard.wasPressed 'escape'
       Event.quit!
 
-
-
   draw: =>
     @paddle\draw!
     @ball\draw!

@@ -13,8 +13,8 @@ export class PlayState extends BaseState
     @health = P.health
     @collisions = Collisions!
 
-    @ball.dx = random -200, 200
-    @ball.dy = random -50, -60
+    @ball.dx = random 50, 70
+    @ball.dy = random -50, -200
 
 
   update: (dt) =>
@@ -32,6 +32,22 @@ export class PlayState extends BaseState
     @ball\update dt
 
     @score += @collisions\resolve_collisions @ball, @paddle, @bricks
+
+    if @ball.y >= VIRTUAL_HEIGHT
+      @health -= 1
+      Res.Sounds['hurt']\play!
+
+      if @health == 0
+        GStateMachine\change 'game-over', {
+          score: @score
+        }
+      else
+        GStateMachine\change 'serve',{
+          paddle: @paddle,
+          bricks: @bricks,
+          health: @health,
+          score: @score,
+        }
 
 
     if Keyboard.wasPressed 'escape'
