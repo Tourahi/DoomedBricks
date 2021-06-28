@@ -21,9 +21,7 @@ class Brick
 
   hit: =>
     Res.Sounds['brick-hit-2']\play!
-    @inGame = false
 
   draw: =>
-    if @inGame
-      Graphics.draw Res.Textures['main'], Frames['bricks'][1 + ((@color - 1) * 4) + @tier],
-        @x, @y
+    Graphics.draw Res.Textures['main'], Frames['bricks'][1 + ((@color - 1) * 4) + @tier],
+      @x, @y

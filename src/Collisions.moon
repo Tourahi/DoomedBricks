@@ -3,6 +3,7 @@ Ball  = assert require 'src/Ball'
 Timer = assert require "src/Timer"
 
 import abs from math
+import remove from table
 
 class Collisions
   new: =>
@@ -43,20 +44,24 @@ class Collisions
 
 
   ball_bricks_collision: (ball, bricks) =>
-    for _, brick in pairs bricks
+    for i, brick in pairs bricks
       overlap, shift_b_x, shift_b_y = @check_rectangles_overlap brick, ball
-      if brick.inGame and overlap
+      if overlap
+        Res.Sounds['brick-hit-2']\stop!
+        Res.Sounds['brick-hit-2']\play!
         @score = 10
         ball\rebound( {x: shift_b_x, y:shift_b_y} )
-        brick\hit!
+        remove bricks, i, brick
+    bricks
+
 
 
 
   resolve_collisions: (ball, paddle, bricks) =>
     @score = 0
     @ball_paddle_collision paddle, ball
-    @ball_bricks_collision ball, bricks
-    @score
+    bricks = @ball_bricks_collision ball, bricks
+    @score, bricks
 
 
 

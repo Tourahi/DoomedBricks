@@ -32,8 +32,8 @@ export class PlayState extends BaseState
     @paddle\update dt
     @ball\update dt
 
-    @score += @collisions\resolve_collisions @ball, @paddle, @bricks
-
+    s,@bricks = @collisions\resolve_collisions @ball, @paddle, @bricks
+    @score += s
     if @ball.y >= VIRTUAL_HEIGHT
       @health -= 1
       Res.Sounds['hurt']\play!

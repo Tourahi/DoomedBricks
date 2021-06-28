@@ -35,6 +35,7 @@ class LevelManager
     @newHTierHColor level
     @newNumColRow!
     bricks = {}
+    i = 1
     for y = 1, @numRows
       -- if skipping pattern is allowed
       skip_p = random(1,2) == 1 and true or false
@@ -74,7 +75,8 @@ class LevelManager
           b.color = solid_color
           b.tier = solid_tier
 
-        table.insert bricks, b
+        table.insert bricks, i, b
+        i += 1
 
     if #bricks == 0
       @generatorA level
