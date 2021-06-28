@@ -12,6 +12,7 @@ export class PlayState extends BaseState
     @score = P.score
     @health = P.health
     @collisions = Collisions!
+    @levelManager = P.levelManager
 
     @ball.dx = random 50, 70
     @ball.dy = random -50, -200
@@ -48,6 +49,7 @@ export class PlayState extends BaseState
           health: @health,
           score: @score,
           ball: @ball
+          levelManager: @levelManager
         }
 
 

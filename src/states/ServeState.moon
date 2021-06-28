@@ -6,7 +6,8 @@ import random from math
 export class ServeState extends BaseState
   new: (P) =>
     @paddle = P.paddle
-    @bricks = P.bricks
+    @levelManager = P.levelManager
+    @bricks = P.bricks or @levelManager\generate 1
     @health = P.health
     @score = P.score
 
@@ -24,7 +25,8 @@ export class ServeState extends BaseState
         bricks: @bricks,
         health: @health,
         score: @score,
-        ball: @ball
+        ball: @ball,
+        levelManager: @levelManager
       }
 
     if Keyboard.wasPressed 'escape'

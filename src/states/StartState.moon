@@ -1,5 +1,5 @@
 Paddle = assert require 'src/Paddle'
-LevelMaker = assert require 'src/LevelMaker'
+LevelManager = assert require 'src/LevelManager'
 
 import ceil from math
 
@@ -19,7 +19,7 @@ export class StartState extends BaseState
       Res.Sounds['confirm']\play!
       GStateMachine\change 'serve', {
         paddle: Paddle 'medium',
-        bricks: LevelMaker.createMap(LevelMaker, 1),
+        levelManager: LevelManager!,
         health: 3,
         score: 0
       }
