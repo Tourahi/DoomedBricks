@@ -4,6 +4,7 @@ Collisions = assert require 'src/Collisions'
 import random from math
 
 export class PlayState extends BaseState
+  @level: 1
   new: (P) =>
     @paused = false
     @paddle = P.paddle
@@ -19,6 +20,7 @@ export class PlayState extends BaseState
 
 
   update: (dt) =>
+    Dump @@level
     if @paused
       if Keyboard.wasPressed 'space'
         @paused = false
@@ -33,6 +35,17 @@ export class PlayState extends BaseState
     @ball\update dt
 
     s,@bricks = @collisions\resolve_collisions @ball, @paddle, @bricks
+    if #@bricks == 0
+      @@level += 1
+      @bricks = @levelManager\generate @@level
+      GStateMachine\change 'serve',{
+        paddle: @paddle,
+        bricks: @bricks,
+        health: @health,
+        score: @score,
+        ball: @ball
+        levelManager: @levelManager
+      }
     @score += s
     if @ball.y >= VIRTUAL_HEIGHT
       @health -= 1
