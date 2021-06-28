@@ -19,7 +19,7 @@ export class StartState extends BaseState
       Res.Sounds['confirm']\play!
       GStateMachine\change 'serve', {
         paddle: Paddle 'medium',
-        bricks: LevelMaker.createMap 1,
+        bricks: LevelMaker.createMap(LevelMaker, 1),
         health: 3,
         score: 0
       }
