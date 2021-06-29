@@ -25,7 +25,6 @@ with love
     Bino\update!
     GStateMachine\update dt
     Keyboard.keysPressed = {}
-    Bino\watch "", ->  100
 
 
   .resize = (w, h) ->

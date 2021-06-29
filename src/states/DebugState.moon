@@ -15,12 +15,29 @@ export class DebugState extends BaseState
     @health = 3
     @collisions = Collisions!
 
+    -- flags
+    @updateBalls = false
+
 
   update: (dt) =>
+    @updateFlags!
     @paddle\update dt
-
+    if @updateBalls
+      @ballsM\update dt
+    s,@bricks = @collisions\resolve_collisions @ballsM\getBalls!, @paddle, @bricks
+    @score += s
     if Keyboard.wasPressed 'escape'
       Event.quit!
 
+  updateFlags: () =>
+    if Keyboard.wasPressed 'b'
+      @updateBalls = not @updateBalls
+
   draw: =>
     @paddle\draw!
+    @ballsM\draw!
+    for _, brick in pairs @bricks
+      brick\draw!
+    Util.DrawHealth @health
+    Util.DrawScore @score
+    Util.DrawLevel @level

@@ -89,7 +89,7 @@ class LevelManager
     switch gn
       when 1
         bricks = @generatorA level
-        Dump bricks
+        -- Dump bricks
 
     return bricks
 
