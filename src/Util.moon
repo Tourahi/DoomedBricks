@@ -83,4 +83,10 @@ DrawScore = (score) ->
   Graphics.print 'Score:', VIRTUAL_WIDTH - 60, 5
   Graphics.printf tostring(score), VIRTUAL_WIDTH - 50, 5, 40, 'right'
 
-{:GenerateQuads, :GenerateQuadsPaddles, :GenerateQuadsBalls, :GenerateQuadsBricks, :DrawHealth, :DrawScore}
+DrawLevel = (lvl) ->
+  Graphics.setFont Res.Fonts['small']
+  Graphics.print 'Level:', VIRTUAL_WIDTH - 120, 5
+  Graphics.printf tostring(lvl), VIRTUAL_WIDTH - 115, 5, 40, 'right'
+
+{:GenerateQuads, :GenerateQuadsPaddles, :GenerateQuadsBalls, :GenerateQuadsBricks, :DrawHealth, :DrawScore,
+  :DrawLevel}

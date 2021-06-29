@@ -2,6 +2,5 @@
 
 moonc .
 love .
-rm *.lua
-rm src/*.lua
-rm src/states/*.lua
+find ./src -type f -name '*.lua' -delete
+rm main.lua

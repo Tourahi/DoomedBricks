@@ -8,19 +8,14 @@ export class PlayState extends BaseState
   new: (P) =>
     @paused = false
     @paddle = P.paddle
-    @ball = P.ball
+    @ballsM = P.ballsM
     @bricks = P.bricks
     @score = P.score
     @health = P.health
     @collisions = Collisions!
     @levelManager = P.levelManager
 
-    @ball.dx = random 50, 70
-    @ball.dy = random -50, -200
-
-
   update: (dt) =>
-    Dump @@level
     if @paused
       if Keyboard.wasPressed 'space'
         @paused = false
@@ -32,9 +27,9 @@ export class PlayState extends BaseState
       Res.Sounds['pause']\play!
       return
     @paddle\update dt
-    @ball\update dt
+    @ballsM\update dt
 
-    s,@bricks = @collisions\resolve_collisions @ball, @paddle, @bricks
+    s,@bricks = @collisions\resolve_collisions @ballsM\getBalls!, @paddle, @bricks
     if #@bricks == 0
       @@level += 1
       @bricks = @levelManager\generate @@level
@@ -43,11 +38,13 @@ export class PlayState extends BaseState
         bricks: @bricks,
         health: @health,
         score: @score,
-        ball: @ball
-        levelManager: @levelManager
+        ballsM: @ballsM
+        levelManager: @levelManager,
+        level: @@level
       }
     @score += s
-    if @ball.y >= VIRTUAL_HEIGHT
+
+    if @ballsM\getBalls![1].y >= VIRTUAL_HEIGHT and #@ballsM\getBalls! == 1
       @health -= 1
       Res.Sounds['hurt']\play!
 
@@ -61,8 +58,9 @@ export class PlayState extends BaseState
           bricks: @bricks,
           health: @health,
           score: @score,
-          ball: @ball
-          levelManager: @levelManager
+          ballsM: @ballsM
+          levelManager: @levelManager,
+          level: @@level
         }
 
 
@@ -72,8 +70,9 @@ export class PlayState extends BaseState
   draw: =>
     Util.DrawHealth @health
     Util.DrawScore @score
+    Util.DrawLevel @@level
     @paddle\draw!
-    @ball\draw!
+    @ballsM\draw!
 
     for _, brick in pairs @bricks
       brick\draw!

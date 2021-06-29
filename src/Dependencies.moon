@@ -23,6 +23,7 @@ assert require 'src/states/PlayState'
 assert require 'src/states/SettingsState'
 assert require 'src/states/ServeState'
 assert require 'src/states/GameOverState'
+assert require 'src/states/DebugState'
 
 
 
@@ -32,6 +33,7 @@ export GStateMachine = StateMachine {
   ['play']: (params) -> PlayState params
   ['settings']: (params) -> SettingsState params
   ['game-over']: (params) -> GameOverState params
+  ['debug']: (params) -> DebugState params
 }
 
 

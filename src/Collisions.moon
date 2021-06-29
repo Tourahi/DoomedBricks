@@ -8,6 +8,13 @@ import remove from table
 class Collisions
   new: =>
     @score = 0
+
+  overlap_along_axis: (aPos, bPos, aSize, bSize) =>
+    diff = bPos - aPos
+    dist = abs diff
+    overlap = ( aSize + bSize ) / 2 - dist
+    overlap, diff / (dist * overlap)
+
   check_rectangles_overlap: (a, b) =>
     overlap = false
     shift_b_x, shift_b_y = 0, 0
@@ -28,9 +35,9 @@ class Collisions
            shift_b_y = a.y - ( b.y + b.height )
         if a.__class == Paddle and b.__class == Ball
           if  b.x  <  a.x + (a.width / 2) and a.dx < 0
-            b.dx = -50 + -(8 * (a.x + a.width / 2 - b.x))
+            b.dx = -70 + -(8 * (a.x + a.width / 2 - b.x))
           if  b.x  >  a.x + (a.width / 2) and a.dx > 0
-            b.dx = 50 + (8 * abs((a.x + a.width / 2 - b.x)))
+            b.dx = 70 + (8 * abs((a.x + a.width / 2 - b.x)))
 
     return overlap, shift_b_x, shift_b_y
 
@@ -57,10 +64,12 @@ class Collisions
 
 
 
-  resolve_collisions: (ball, paddle, bricks) =>
+  resolve_collisions: (balls, paddle, bricks) =>
     @score = 0
-    @ball_paddle_collision paddle, ball
-    bricks = @ball_bricks_collision ball, bricks
+    for _, ball in ipairs balls
+      @ball_paddle_collision paddle, ball
+    for _, ball in ipairs balls
+      bricks = @ball_bricks_collision ball, bricks
     @score, bricks
 
 

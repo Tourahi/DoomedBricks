@@ -1,5 +1,6 @@
 Paddle = assert require 'src/Paddle'
-LevelManager = assert require 'src/LevelManager'
+LevelManager = assert require 'src/managers/LevelManager'
+BallManager = assert require 'src/managers/BallManager'
 
 import ceil from math
 
@@ -20,9 +21,15 @@ export class StartState extends BaseState
       GStateMachine\change 'serve', {
         paddle: Paddle 'medium',
         levelManager: LevelManager!,
+        ballsM: BallManager!
         health: 3,
-        score: 0
+        score: 0,
+        level: 1
       }
+
+    if Keyboard.wasPressed('f5')
+      GStateMachine\change 'debug'
+
 
     elseif @highlighted == 3 and (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))
       Res.Sounds['confirm']\play!

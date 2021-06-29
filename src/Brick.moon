@@ -9,7 +9,6 @@ class Brick
     @y = y
     @width = 32
     @height = 16
-    @inGame = true
 
   setColor: (type) =>
     assert type > @maxColors, "Color does not exist"
