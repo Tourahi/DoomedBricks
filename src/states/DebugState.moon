@@ -22,6 +22,7 @@ export class DebugState extends BaseState
   update: (dt) =>
     @updateFlags!
     @paddle\update dt
+    @resetBall!
     if @updateBalls
       @ballsM\update dt
     s,@bricks = @collisions\resolve_collisions @ballsM\getBalls!, @paddle, @bricks
@@ -32,6 +33,10 @@ export class DebugState extends BaseState
   updateFlags: () =>
     if Keyboard.wasPressed 'b'
       @updateBalls = not @updateBalls
+
+  resetBall: () =>
+    if Keyboard.wasPressed 'r'
+      @ballsM\setAllPos @paddle.x + (@paddle.width / 2) - 4, @paddle.y - 8
 
   draw: =>
     @paddle\draw!
