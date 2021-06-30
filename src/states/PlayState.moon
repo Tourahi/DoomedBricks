@@ -14,6 +14,7 @@ export class PlayState extends BaseState
     @health = P.health
     @collisions = Collisions!
     @levelManager = P.levelManager
+    @loveframes = P.loveframes
 
   update: (dt) =>
     if @paused
@@ -40,7 +41,8 @@ export class PlayState extends BaseState
         score: @score,
         ballsM: @ballsM
         levelManager: @levelManager,
-        level: @@level
+        level: @@level,
+        loveframes: @loveframes
       }
     @score += s
 
@@ -50,7 +52,8 @@ export class PlayState extends BaseState
 
       if @health == 0
         GStateMachine\change 'game-over', {
-          score: @score
+          score: @score,
+          loveframes: @loveframes
         }
       else
         GStateMachine\change 'serve',{
@@ -60,7 +63,8 @@ export class PlayState extends BaseState
           score: @score,
           ballsM: @ballsM
           levelManager: @levelManager,
-          level: @@level
+          level: @@level,
+          loveframes: @loveframes
         }
 
 

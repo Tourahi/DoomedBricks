@@ -5,9 +5,11 @@ BallManager = assert require 'src/managers/BallManager'
 import ceil from math
 
 export class StartState extends BaseState
-  new: =>
+  new: (P) =>
     @highlighted = 1
     @opts = 3
+    @loveframes = P.loveframes
+
 
   update: (dt) =>
     if Keyboard.wasPressed('up') or Keyboard.wasPressed('down')
@@ -24,11 +26,14 @@ export class StartState extends BaseState
         ballsM: BallManager!
         health: 3,
         score: 0,
-        level: 1
+        level: 1,
+        loveframes: @loveframes
       }
 
     if Keyboard.wasPressed('f5')
-      GStateMachine\change 'debug'
+      GStateMachine\change 'debug', {
+        loveframes: @loveframes
+      }
 
 
     elseif @highlighted == 3 and (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))

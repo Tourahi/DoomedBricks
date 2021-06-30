@@ -3,9 +3,11 @@ LevelManager = assert require 'src/managers/LevelManager'
 BallManager = assert require 'src/managers/BallManager'
 Util = assert require 'src/Util'
 Collisions = assert require 'src/Collisions'
+GUI = assert require 'src/GUI/DebugGUI'
+
 
 export class DebugState extends BaseState
-  new: =>
+  new: (P) =>
     @paddle = Paddle 'medium'
     @ballsM = BallManager!
     @levelManager = LevelManager!
@@ -14,10 +16,12 @@ export class DebugState extends BaseState
     @score = 0
     @health = 3
     @collisions = Collisions!
+    @loveframes = P.loveframes
+    @centerarea = {0, 0, 540, 555}
 
     -- flags
     @updateBalls = false
-
+    Run_with_scope GUI.createToolbare, self
 
   update: (dt) =>
     @updateFlags!
@@ -33,6 +37,8 @@ export class DebugState extends BaseState
   updateFlags: () =>
     if Keyboard.wasPressed 'b'
       @updateBalls = not @updateBalls
+
+
 
   resetBall: () =>
     if Keyboard.wasPressed 'r'

@@ -1,12 +1,12 @@
 M = require "moon"
 
 
-
 export Push  = assert require 'luaLibs/push'
 
 export Bino  = assert require 'luaLibs/Binocles'
 Bino!
 export Dump = M.p
+export Run_with_scope = M.run_with_scope
 
 export Graphics = love.graphics
 export Window = love.window

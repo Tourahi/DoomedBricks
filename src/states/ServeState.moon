@@ -12,6 +12,7 @@ export class ServeState extends BaseState
     @score = P.score
     @level = P.level
     @ballsM = P.ballsM
+    @loveframes = P.loveframes
 
   update: (dt) =>
     @paddle\update dt
@@ -24,7 +25,8 @@ export class ServeState extends BaseState
         health: @health,
         score: @score,
         ballsM: @ballsM,
-        levelManager: @levelManager
+        levelManager: @levelManager,
+        loveframes: @loveframes
       }
 
     if Keyboard.wasPressed 'escape'

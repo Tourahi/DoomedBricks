@@ -2,10 +2,13 @@
 export class GameOverState extends BaseState
   new: (P) =>
     @score = P.score
+    @loveframes = P.loveframes
 
   update: (dt) =>
     if (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))
-      GStateMachine\change 'start'
+      GStateMachine\change 'start', {
+        loveframes: @loveframes
+      }
     if Keyboard.wasPressed 'escape'
       Event.quit!
 

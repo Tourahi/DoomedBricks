@@ -1,13 +1,14 @@
 assert require 'src/Dependencies'
 
 import ceil from math
+local loveframes
 
 
 with love
   .load = (arg) ->
     Bino\watch "FPS",-> love.timer.getFPS!
 
-    export loveframes = assert require "luaLibs/loveframes"
+    loveframes = assert require "luaLibs/loveframes"
 
     Graphics.setDefaultFilter 'nearest', 'nearest'
 
@@ -20,7 +21,9 @@ with love
     Push\setupScreen VIRTUAL_WIDTH, VIRTUAL_HEIGHT,
       WINDOW_WIDTH, WINDOW_HEIGHT, WinS
 
-    GStateMachine\change 'start'
+    GStateMachine\change 'start', {
+      loveframes: loveframes
+    }
     Keyboard.keysPressed = {}
 
   .update = (dt) ->
