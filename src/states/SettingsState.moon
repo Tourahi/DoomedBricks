@@ -16,7 +16,8 @@ choices = {
 
 export class SettingsState extends BaseState
 
-  new: =>
+  new: (P) =>
+    @loveframes = P.loveframes
     resolution_o = {
       {w: 720, h: 576},
       {w: 1280, h: 720},
@@ -68,7 +69,9 @@ export class SettingsState extends BaseState
         @updateInGame opt
 
     if @highlighted == 3 and (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))
-      GStateMachine\change 'start'
+      GStateMachine\change 'start',{
+        loveframes: @loveframes
+      }
 
 
 

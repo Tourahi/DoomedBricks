@@ -3,7 +3,6 @@ LevelManager = assert require 'src/managers/LevelManager'
 BallManager = assert require 'src/managers/BallManager'
 Util = assert require 'src/Util'
 Collisions = assert require 'src/Collisions'
-GUI = assert require 'src/GUI/DebugGUI'
 
 
 export class DebugState extends BaseState
@@ -21,7 +20,7 @@ export class DebugState extends BaseState
 
     -- flags
     @updateBalls = false
-    Run_with_scope GUI.createToolbare, self
+    @createToolbare!
 
   update: (dt) =>
     @updateFlags!
@@ -52,3 +51,25 @@ export class DebugState extends BaseState
     Util.DrawHealth @health
     Util.DrawScore @score
     Util.DrawLevel @level
+
+
+  -- GUI
+  createToolbare: =>
+    frame = @loveframes.Create "frame"
+    with frame
+      \SetName "Toolbar"
+      \SetSize 400, 85
+      \CenterWithinArea unpack(@centerarea)
+
+    panel = @loveframes.Create "panel", frame
+    with panel
+      \SetPos 5, 30
+      \SetSize 385, 50
+
+    gmapBtn = @loveframes.Create "button", panel
+    with gmapBtn
+      \SetPos 5, 5
+      \SetWidth 200
+      \SetText "Generate new level"
+      .OnClick = ->
+        @bricks = @levelManager\generate @level

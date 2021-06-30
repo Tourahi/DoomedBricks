@@ -23,7 +23,7 @@ class LevelManager
 
   newHTierHColor: (level) =>
     @heighestTier = min @@MaxTiers, floor(level / 5)
-    @heighestColor = min @@MaxColors, floor(level % 5 + random 5)
+    @heighestColor = min @@MaxColors, floor(level % 5 + 3)
 
   newNumColRow: =>
     @numRows = random 1, @maxRows

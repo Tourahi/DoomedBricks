@@ -38,7 +38,9 @@ export class StartState extends BaseState
 
     elseif @highlighted == 3 and (Keyboard.wasPressed('enter') or Keyboard.wasPressed('return'))
       Res.Sounds['confirm']\play!
-      GStateMachine\change 'settings'
+      GStateMachine\change 'settings',{
+        loveframes: @loveframes
+      }
 
     if Keyboard.wasPressed('escape')
       Event.quit!
