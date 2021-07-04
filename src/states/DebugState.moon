@@ -58,17 +58,17 @@ export class DebugState extends BaseState
     frame = @loveframes.Create "frame"
     with frame
       \SetName "Toolbar"
-      \SetSize 400, 85
+      \SetSize 230, 85
       \CenterWithinArea unpack(@centerarea)
 
     panel = @loveframes.Create "panel", frame
     with panel
       \SetPos 5, 30
-      \SetSize 385, 50
+      \SetSize 220, 50
 
     gmapBtn = @loveframes.Create "button", panel
     with gmapBtn
-      \SetPos 5, 5
+      \SetPos 10, 5
       \SetWidth 200
       \SetText "Generate new level"
       .OnClick = ->
