@@ -1,4 +1,4 @@
-
+import min from math
 class Brick
   new: (x, y) =>
     @tier = 3
@@ -22,5 +22,7 @@ class Brick
     Res.Sounds['brick-hit-2']\play!
 
   draw: =>
-    Graphics.draw Res.Textures['main'], Frames['bricks'][1 + ((@color - 1) * 4) + @tier],
+    -- print "Brick :", 1 + ((@color - 1) * 4) + @tier
+    idx = min( 1 + ((@color - 1) * 4) + @tier, 21)
+    Graphics.draw Res.Textures['main'], Frames['bricks'][idx],
       @x, @y

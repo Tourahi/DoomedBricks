@@ -1,6 +1,7 @@
 Paddle = assert require 'src/Paddle'
 Ball  = assert require 'src/Ball'
 Timer = assert require "src/Timer"
+Score = assert require "src/Score"
 
 import abs from math
 import remove from table
@@ -56,7 +57,7 @@ class Collisions
       if overlap
         Res.Sounds['brick-hit-2']\stop!
         Res.Sounds['brick-hit-2']\play!
-        @score = 10
+        @score = Score.genScore brick
         ball\rebound( {x: shift_b_x, y:shift_b_y} )
         remove bricks, i, brick
     bricks

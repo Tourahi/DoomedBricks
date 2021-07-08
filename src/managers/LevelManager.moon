@@ -25,6 +25,7 @@ class LevelManager
     @heighestTier = min @@MaxTiers, floor(level / 5)
     @heighestColor = min @@MaxColors, floor(level % 5 + 3)
 
+
   newNumColRow: =>
     @numRows = random 1, @maxRows
     @numCols = random 7, @maxCols
@@ -45,8 +46,8 @@ class LevelManager
       alter_color1 = random 1, @heighestColor
       alter_color2 = random 1, @heighestColor
 
-      alter_tier1 = random 1, @heighestTier
-      alter_tier2 = random 1, @heighestTier
+      alter_tier1 = random 0, @heighestTier
+      alter_tier2 = random 0, @heighestTier
       -- flags
       skip_f = random(2) == 1 and true or false
       alter_f = random(2) == 1 and true or false
