@@ -43,5 +43,4 @@ export WinS = {
   resizable: true
 }
 
-love.sound.Sound_On = true
 

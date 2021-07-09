@@ -1,8 +1,6 @@
 import random from math
 import min from math
 import abs from math
-import timer from love
-
 
 clamp = (n, low, high) -> math.min(math.max(n, low), high)
 

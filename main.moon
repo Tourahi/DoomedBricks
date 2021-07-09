@@ -1,6 +1,5 @@
 assert require 'src/Dependencies'
 
-import ceil from math
 local loveframes
 
 

@@ -1,5 +1,4 @@
 Util = assert require 'src/Util'
-Ball = assert require 'src/Ball'
 
 import random from math
 
