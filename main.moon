@@ -4,6 +4,7 @@ local loveframes
 
 
 with love
+
   .load = (arg) ->
     Bino\watch "FPS",-> love.timer.getFPS!
 

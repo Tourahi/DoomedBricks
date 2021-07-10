@@ -34,6 +34,7 @@ export class PlayState extends BaseState
     if #@bricks == 0
       @@level += 1
       @bricks = @levelManager\generate @@level
+      @ballsM\resetV!
       GStateMachine\change 'serve',{
         paddle: @paddle,
         bricks: @bricks,
@@ -48,6 +49,7 @@ export class PlayState extends BaseState
 
     if @ballsM\getBalls![1].y >= VIRTUAL_HEIGHT and #@ballsM\getBalls! == 1
       @health -= 1
+      @ballsM\resetV!
       Res.Sounds['hurt']\play!
 
       if @health == 0

@@ -7,6 +7,7 @@ export Bino  = assert require 'luaLibs/Binocles'
 Bino!
 export Dump = M.p
 export Run_with_scope = M.run_with_scope
+export BgColor = {1,1,0.2}
 
 export Graphics = love.graphics
 export Window = love.window

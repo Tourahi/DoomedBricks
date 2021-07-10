@@ -20,7 +20,7 @@ class Ball
 
   start: =>
     @dx = random -200, 200
-    @dy = random -200, -200
+    @dy = -140
     @x = VIRTUAL_WIDTH / 2 - 4
     @y = VIRTUAL_HEIGHT - 42
     --Bino\watch "D_x_y",-> {dx:@dx, dy:@dy}
