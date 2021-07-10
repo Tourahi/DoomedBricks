@@ -41,7 +41,7 @@ with love
     Push\finish!
     Graphics.setFont Res.Fonts['medium']
     loveframes.draw!
-    Bino\draw!
+    -- Bino\draw!
 
 
   .keypressed = (key, is_r) ->

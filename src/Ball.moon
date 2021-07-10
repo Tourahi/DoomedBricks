@@ -12,7 +12,7 @@ class Ball
     @dx = 0
     @dy = 0
     @mDx = {max: 200, min:-200}
-    @mDy = {max: 200, min:-200}
+    @mDy = {max: 150, min:-150}
     @skin = skin
     @x = VIRTUAL_WIDTH / 2 - 2
     @y = VIRTUAL_HEIGHT / 2 - 2

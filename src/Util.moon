@@ -80,13 +80,13 @@ DrawHealth = (health) ->
 
 DrawScore = (score) ->
   Graphics.setFont Res.Fonts['small']
-  Graphics.print 'Score:', VIRTUAL_WIDTH - 60, 5
-  Graphics.printf tostring(score), VIRTUAL_WIDTH - 50, 5, 40, 'right'
+  Graphics.print 'Score:', VIRTUAL_WIDTH - 60 - string.len(tostring score) * 3, 5
+  Graphics.printf tostring(score), VIRTUAL_WIDTH - 70, 5, 60, 'right'
 
 DrawLevel = (lvl) ->
   Graphics.setFont Res.Fonts['small']
-  Graphics.print 'Level:', VIRTUAL_WIDTH - 120, 5
-  Graphics.printf tostring(lvl), VIRTUAL_WIDTH - 115, 5, 40, 'right'
+  Graphics.print 'Level:',10, 5
+  Graphics.printf tostring(lvl), 10, 5, 40, 'right'
 
 {:GenerateQuads, :GenerateQuadsPaddles, :GenerateQuadsBalls, :GenerateQuadsBricks, :DrawHealth, :DrawScore,
   :DrawLevel}

@@ -36,9 +36,10 @@ class Collisions
            shift_b_y = a.y - ( b.y + b.height )
         if a.__class == Paddle and b.__class == Ball
           if  b.x  <  a.x + (a.width / 2) and a.dx < 0
-            b.dx = -70 + -(8 * (a.x + a.width / 2 - b.x))
+            b.dx -= 70 + (8 * (a.x + a.width / 2 - b.x))
           if  b.x  >  a.x + (a.width / 2) and a.dx > 0
-            b.dx = 70 + (8 * abs((a.x + a.width / 2 - b.x)))
+            b.dx += 70 + (8 * abs((a.x + a.width / 2 - b.x)))
+    Bino\watch "ballDXY",-> {"dx":b.dx, "dy:":b.dy}
 
     return overlap, shift_b_x, shift_b_y
 
