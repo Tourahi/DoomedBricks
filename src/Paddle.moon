@@ -55,7 +55,7 @@ class Paddle
   draw: =>
     Graphics.draw Res.Textures['main'], Frames['paddles'][@size + (4 * (@skin - 1))],
       @x, @y
-    Graphics.rectangle 'line', @x, @y, @width, @height
+    -- Graphics.rectangle 'line', @x, @y, @width, @height
 
 
 

@@ -24,13 +24,13 @@ class BallManager
   addBall: (x, y) =>
     ball = Ball random 7
     ball.dx = random -200, 200
-    ball.dy = -140
+    ball.dy = random -140, -200
     insert @balls, @idx, ball
 
   resetV: =>
     for _, ball in ipairs @balls
-      ball.dx = random 100, 120
-      ball.dy = random 100, -120
+      ball.dx = random -200, 200
+      ball.dy = random -140, -200
 
   removeBall: (i) =>
     remove @balls, i

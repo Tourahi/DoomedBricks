@@ -12,7 +12,7 @@ class Ball
     @dx = 0
     @dy = 0
     @mDx = {max: 200, min:-200}
-    @mDy = {max: 150, min:-150}
+    @mDy = {max: 200, min:-200}
     @skin = skin
     @x = VIRTUAL_WIDTH / 2 - 2
     @y = VIRTUAL_HEIGHT / 2 - 2
@@ -20,7 +20,7 @@ class Ball
 
   start: =>
     @dx = random -200, 200
-    @dy = -140
+    @dy = random -140, -200
     @x = VIRTUAL_WIDTH / 2 - 4
     @y = VIRTUAL_HEIGHT - 42
     --Bino\watch "D_x_y",-> {dx:@dx, dy:@dy}
